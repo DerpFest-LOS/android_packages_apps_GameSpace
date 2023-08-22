@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2021 Chaldeaprjkt
+ * Copyright (C) 2023 risingOS Android Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,15 +57,17 @@ class GameSession @Inject constructor(
         state = SessionState(
             packageName = sessionName,
             autoBrightness = systemSettings.autoBrightness,
+            headsup = systemSettings.headsup,
             threeScreenshot = systemSettings.threeScreenshot,
-            headsUp = systemSettings.headsUp,
-            island = systemSettings.island,
             ringerMode = audioManager.ringerModeInternal,
             doubleTapToSleep = systemSettings.doubleTapToSleep,
             fastChargeDisabler = systemSettings.fastChargeDisabler as? Boolean
         )
         if (appSettings.noAutoBrightness) {
             systemSettings.autoBrightness = false
+        }
+        if (appSettings.danmakuNotification) {
+            systemSettings.headsup = false
         }
         if (appSettings.noThreeScreenshot) {
             systemSettings.threeScreenshot = false
@@ -74,16 +77,6 @@ class GameSession @Inject constructor(
         }
         if (appSettings.fastChargeDisabler) {
             systemSettings.fastChargeDisabler = false
-        }
-        if (appSettings.notificationsMode == 0 || appSettings.notificationsMode == 3) {
-            systemSettings.headsUp = false
-            systemSettings.island = false
-        } else if (appSettings.notificationsMode == 1) {
-            systemSettings.headsUp = true
-            systemSettings.island = false
-        } else {
-            systemSettings.headsUp = true
-            systemSettings.island = true
         }
         if (appSettings.ringerMode != 3) {
             audioManager.ringerModeInternal = appSettings.ringerMode
@@ -95,6 +88,9 @@ class GameSession @Inject constructor(
         if (appSettings.noAutoBrightness) {
             orig.autoBrightness?.let { systemSettings.autoBrightness = it }
         }
+        if (appSettings.danmakuNotification) {
+            orig.headsup?.let { systemSettings.headsup = it }
+        }
         if (appSettings.noThreeScreenshot) {
             orig.threeScreenshot?.let { systemSettings.threeScreenshot = it }
         }
@@ -104,8 +100,6 @@ class GameSession @Inject constructor(
         if (appSettings.fastChargeDisabler) {
             orig.fastChargeDisabler?.let { systemSettings.fastChargeDisabler = it }
         }
-        orig.headsUp?.let { systemSettings.headsUp = it }
-        orig.island?.let { systemSettings.island = it }
         if (appSettings.ringerMode != 3) {
             audioManager.ringerModeInternal = orig.ringerMode
         }

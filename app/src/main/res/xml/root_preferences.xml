@@ -59,6 +59,12 @@
         android:key="in_game_preferences"
         android:title="@string/in_game_preferences_title">
 
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="gamespace_danmaku_notification_mode"
+            android:summary="@string/danmaku_notification_mode_summary"
+            android:title="@string/danmaku_notification_mode_title" />
+
         <ListPreference
             android:defaultValue="0"
             android:entries="@array/in_game_calls_entries"
@@ -75,14 +81,6 @@
             app:units="s"
             android:title="@string/in_game_calls_delay_title"
             android:summary="@string/in_game_calls_delay_summary" />
-
-        <ListPreference
-            android:defaultValue="3"
-            android:entries="@array/in_game_notifications_entries"
-            android:entryValues="@array/in_game_notifications_values"
-            android:key="gamespace_notifications_mode"
-            android:summary="%s"
-            android:title="@string/in_game_notifications_title" />
 
         <ListPreference
             android:defaultValue="3"

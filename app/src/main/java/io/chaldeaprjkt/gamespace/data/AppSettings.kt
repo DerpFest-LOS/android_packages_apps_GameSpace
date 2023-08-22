@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2021 Chaldeaprjkt
  *               2022 crDroid Android Project
+ *               2023 risingOS Android Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +54,10 @@ class AppSettings @Inject constructor(private val context: Context) {
         get() = db.getBoolean(KEY_STAY_AWAKE, false)
         set(value) = db.edit().putBoolean(KEY_STAY_AWAKE, value).apply()
 
+    var danmakuNotification
+        get() = db.getBoolean(KEY_DANMAKU_NOTIFICATION_MODE, true)
+        set(value) = db.edit().putBoolean(KEY_DANMAKU_NOTIFICATION_MODE, value).apply()
+
     var callsMode: Int
         get() = db.getString(KEY_CALLS_MODE, "0")?.toInt() ?: 0
         set(value) = db.edit().putString(KEY_CALLS_MODE, value.toString()).apply()
@@ -60,10 +65,6 @@ class AppSettings @Inject constructor(private val context: Context) {
     var callsDelay: Int
         get() = db.getInt(KEY_CALLS_DELAY, 0)
         set(value) = db.edit().putInt(KEY_CALLS_DELAY, value).apply()
-
-    var notificationsMode: Int
-        get() = db.getString(KEY_NOTIFICAITONS_MODE, "3")?.toInt() ?: 3
-        set(value) = db.edit().putString(KEY_NOTIFICAITONS_MODE, value.toString()).apply()
 
     var ringerMode: Int
         get() = db.getString(KEY_RINGER_MODE, "3")?.toInt() ?: 3
@@ -91,7 +92,7 @@ class AppSettings @Inject constructor(private val context: Context) {
         const val KEY_STAY_AWAKE = "gamespace_stay_awake"
         const val KEY_CALLS_MODE = "gamespace_calls_mode"
         const val KEY_CALLS_DELAY = "gamespace_calls_delay"
-        const val KEY_NOTIFICAITONS_MODE = "gamespace_notifications_mode"
+        const val KEY_DANMAKU_NOTIFICATION_MODE = "gamespace_danmaku_notification_mode"
         const val KEY_RINGER_MODE = "gamespace_ringer_mode"
         const val KEY_MENU_OPACITY = "gamespace_menu_opacity"
         const val KEY_DOUBLE_TAP_TO_SLEEP = "double_tap_sleep_gesture"
