@@ -32,6 +32,8 @@ import io.chaldeaprjkt.gamespace.data.SystemSettings
 import io.chaldeaprjkt.gamespace.data.UserGame
 import javax.inject.Inject
 
+import org.derpfest.providers.DerpFestSettings
+
 class GameModeUtils @Inject constructor(private val context: Context) {
 
     private var manager: GameManager? = null
@@ -48,11 +50,11 @@ class GameModeUtils @Inject constructor(private val context: Context) {
     fun setIntervention(packageName: String, modeData: List<GameConfig>? = null) {
         // Separate key and value by ;; to identify them from
         // com.android.server.app.GameManagerService for the device_config property.
-        // Example: com.libremobileos.game;;mode=2,downscaleFactor=0.7:mode=3,downscaleFactor=0.8
+        // Example: org.derpfest.game;;mode=2,downscaleFactor=0.7:mode=3,downscaleFactor=0.8
         val configValue = "${packageName};;${modeData?.asConfig()}"
         Settings.Secure.putString(
                 context.contentResolver,
-                Settings.Secure.GAME_OVERLAY,
+                DerpFestSettings.Secure.GAME_OVERLAY,
                 configValue
         )
     }
