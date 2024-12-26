@@ -30,7 +30,7 @@ android_app {
         "vendor.lineage.fastcharge-V1.0-java",
     ],
     libs: [
-        "framework-derpfest",
+        "framework-derpfest.impl",
     ],
     kotlincflags: [
         "-opt-in=kotlin.Experimental",
