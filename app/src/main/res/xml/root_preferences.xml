@@ -67,6 +67,15 @@
             android:summary="%s"
             android:title="@string/in_game_calls_title" />
 
+        <org.derpfest.support.preferences.ProperSeekBarPreference
+            android:defaultValue="0"
+            android:key="gamespace_calls_delay"
+            android:max="10"
+            app:min="0"
+            app:units="s"
+            android:title="@string/in_game_calls_delay_title"
+            android:summary="@string/in_game_calls_delay_summary" />
+
         <ListPreference
             android:defaultValue="2"
             android:entries="@array/in_game_notifications_entries"
