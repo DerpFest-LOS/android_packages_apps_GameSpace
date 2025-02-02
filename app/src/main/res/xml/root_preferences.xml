@@ -136,7 +136,7 @@
             android:summary="@string/lock_gesture_summary"
             android:title="@string/lock_gesture_title" />
 
-        <org.derpfest.support.preferences.CustomSeekBarPreference
+        <org.derpfest.support.preferences.ProperSeekBarPreference
             android:key="gamespace_menu_opacity"
             android:title="@string/gamespace_menu_opacity_title"
             android:defaultValue="100"
