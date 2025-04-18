@@ -28,6 +28,7 @@ android_app {
         "hilt_android",
         "VendorSupport-preference",
         "vendor.lineage.fastcharge-V1.0-java",
+        "org.lineageos.platform.internal",
     ],
     kotlincflags: [
         "-opt-in=kotlin.Experimental",

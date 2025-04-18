@@ -23,6 +23,8 @@ import android.util.Log;
 import io.chaldeaprjkt.gamespace.utils.GameModeUtils
 import javax.inject.Inject
 
+import lineageos.providers.LineageSettings
+
 import vendor.lineage.fastcharge.V1_0.IFastCharge
 
 class SystemSettings @Inject constructor(
@@ -113,13 +115,13 @@ class SystemSettings @Inject constructor(
         }
 
     var doubleTapToSleep
-        get() = Settings.System.getIntForUser(
-                resolver, Settings.System.DOUBLE_TAP_SLEEP_GESTURE,1,
+        get() = LineageSettings.System.getIntForUser(
+                resolver, LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE,1,
                 UserHandle.USER_CURRENT
             )==1
             set(it){
-                Settings.System.putIntForUser(
-                    resolver,Settings.System.DOUBLE_TAP_SLEEP_GESTURE,
+                LineageSettings.System.putIntForUser(
+                    resolver,LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE,
                     it.toInt(),UserHandle.USER_CURRENT
             )
         }
