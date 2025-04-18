@@ -32,8 +32,6 @@ import io.chaldeaprjkt.gamespace.data.SystemSettings
 import io.chaldeaprjkt.gamespace.data.UserGame
 import javax.inject.Inject
 
-import org.derpfest.providers.DerpFestSettings
-
 class GameModeUtils @Inject constructor(private val context: Context) {
 
     private var manager: GameManager? = null
@@ -54,7 +52,7 @@ class GameModeUtils @Inject constructor(private val context: Context) {
         val configValue = "${packageName};;${modeData?.asConfig()}"
         Settings.Secure.putString(
                 context.contentResolver,
-                DerpFestSettings.Secure.GAME_OVERLAY,
+                Settings.Secure.GAME_OVERLAY,
                 configValue
         )
     }

@@ -29,9 +29,6 @@ android_app {
         "VendorSupport-preference",
         "vendor.lineage.fastcharge-V1.0-java",
     ],
-    libs: [
-        "framework-derpfest",
-    ],
     kotlincflags: [
         "-opt-in=kotlin.Experimental",
         "-opt-in=kotlin.ExperimentalStdlibApi",

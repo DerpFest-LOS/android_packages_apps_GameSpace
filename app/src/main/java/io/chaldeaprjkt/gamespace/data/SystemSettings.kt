@@ -23,8 +23,6 @@ import android.util.Log;
 import io.chaldeaprjkt.gamespace.utils.GameModeUtils
 import javax.inject.Inject
 
-import org.derpfest.providers.DerpFestSettings
-
 import vendor.lineage.fastcharge.V1_0.IFastCharge
 
 class SystemSettings @Inject constructor(
@@ -68,12 +66,12 @@ class SystemSettings @Inject constructor(
 
     var threeScreenshot
         get() = Settings.System.getIntForUser(
-            resolver, DerpFestSettings.System.THREE_FINGER_GESTURE, 0,
+            resolver, Settings.System.THREE_FINGER_GESTURE, 0,
             UserHandle.USER_CURRENT
         ) == 1
         set(it) {
             Settings.System.putIntForUser(
-                resolver, DerpFestSettings.System.THREE_FINGER_GESTURE,
+                resolver, Settings.System.THREE_FINGER_GESTURE,
                 it.toInt(), UserHandle.USER_CURRENT
             )
         }
@@ -81,14 +79,14 @@ class SystemSettings @Inject constructor(
     var suppressFullscreenIntent
         get() = Settings.System.getIntForUser(
             resolver,
-            DerpFestSettings.System.GAMESPACE_SUPPRESS_FULLSCREEN_INTENT,
+            Settings.System.GAMESPACE_SUPPRESS_FULLSCREEN_INTENT,
             0,
             UserHandle.USER_CURRENT
         ) == 1
         set(it) {
             Settings.System.putIntForUser(
                 resolver,
-                DerpFestSettings.System.GAMESPACE_SUPPRESS_FULLSCREEN_INTENT,
+                Settings.System.GAMESPACE_SUPPRESS_FULLSCREEN_INTENT,
                 it.toInt(),
                 UserHandle.USER_CURRENT
             )
@@ -97,7 +95,7 @@ class SystemSettings @Inject constructor(
     var userGames
         get() =
             Settings.System.getStringForUser(
-                resolver, DerpFestSettings.System.GAMESPACE_GAME_LIST,
+                resolver, Settings.System.GAMESPACE_GAME_LIST,
                 UserHandle.USER_CURRENT
             )
                 ?.split(";")
@@ -106,7 +104,7 @@ class SystemSettings @Inject constructor(
         set(games) {
             Settings.System.putStringForUser(
                 resolver,
-                DerpFestSettings.System.GAMESPACE_GAME_LIST,
+                Settings.System.GAMESPACE_GAME_LIST,
                 if (games.isEmpty()) "" else
                     games.joinToString(";") { it.toString() },
                 UserHandle.USER_CURRENT
@@ -116,12 +114,12 @@ class SystemSettings @Inject constructor(
 
     var doubleTapToSleep
         get() = Settings.System.getIntForUser(
-                resolver, DerpFestSettings.System.DOUBLE_TAP_SLEEP_GESTURE,1,
+                resolver, Settings.System.DOUBLE_TAP_SLEEP_GESTURE,1,
                 UserHandle.USER_CURRENT
             )==1
             set(it){
                 Settings.System.putIntForUser(
-                    resolver,DerpFestSettings.System.DOUBLE_TAP_SLEEP_GESTURE,
+                    resolver,Settings.System.DOUBLE_TAP_SLEEP_GESTURE,
                     it.toInt(),UserHandle.USER_CURRENT
             )
         }

@@ -35,8 +35,6 @@ import io.chaldeaprjkt.gamespace.preferences.AppListPreferences
 import io.chaldeaprjkt.gamespace.preferences.appselector.AppSelectorActivity
 import javax.inject.Inject
 
-import org.derpfest.providers.DerpFestSettings
-
 import vendor.lineage.fastcharge.V1_0.IFastCharge
 
 @AndroidEntryPoint(PreferenceFragmentCompat::class)
@@ -95,7 +93,7 @@ class SettingsFragment : Hilt_SettingsFragment(), Preference.OnPreferenceChangeL
             onPreferenceChangeListener = this@SettingsFragment
         }
 
-        apps = findPreference(DerpFestSettings.System.GAMESPACE_GAME_LIST)
+        apps = findPreference(Settings.System.GAMESPACE_GAME_LIST)
         apps?.onRegisteredAppClick {
             perAppResult.launch(Intent(context, PerAppSettingsActivity::class.java).apply {
                 putExtra(PerAppSettingsActivity.EXTRA_PACKAGE, it)
@@ -108,7 +106,7 @@ class SettingsFragment : Hilt_SettingsFragment(), Preference.OnPreferenceChangeL
                 return@setOnPreferenceClickListener true
             }
 
-        findPreference<SwitchPreferenceCompat>(DerpFestSettings.System.GAMESPACE_SUPPRESS_FULLSCREEN_INTENT)?.apply {
+        findPreference<SwitchPreferenceCompat>(Settings.System.GAMESPACE_SUPPRESS_FULLSCREEN_INTENT)?.apply {
             isChecked = settings.suppressFullscreenIntent
             onPreferenceChangeListener = this@SettingsFragment
         }
@@ -167,7 +165,7 @@ class SettingsFragment : Hilt_SettingsFragment(), Preference.OnPreferenceChangeL
                 gameOptimization.isCacheManagementEnabled = newValue as Boolean
                 return true
             }
-            DerpFestSettings.System.GAMESPACE_SUPPRESS_FULLSCREEN_INTENT -> {
+            Settings.System.GAMESPACE_SUPPRESS_FULLSCREEN_INTENT -> {
                 settings.suppressFullscreenIntent = newValue as Boolean
                 return true
             }
