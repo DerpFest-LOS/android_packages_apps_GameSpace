@@ -77,7 +77,7 @@
             android:summary="@string/in_game_calls_delay_summary" />
 
         <ListPreference
-            android:defaultValue="2"
+            android:defaultValue="3"
             android:entries="@array/in_game_notifications_entries"
             android:entryValues="@array/in_game_notifications_values"
             android:key="gamespace_notifications_mode"

@@ -62,7 +62,7 @@ class AppSettings @Inject constructor(private val context: Context) {
         set(value) = db.edit().putInt(KEY_CALLS_DELAY, value).apply()
 
     var notificationsMode: Int
-        get() = db.getString(KEY_NOTIFICAITONS_MODE, "2")?.toInt() ?: 2
+        get() = db.getString(KEY_NOTIFICAITONS_MODE, "3")?.toInt() ?: 3
         set(value) = db.edit().putString(KEY_NOTIFICAITONS_MODE, value.toString()).apply()
 
     var ringerMode: Int
